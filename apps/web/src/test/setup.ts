@@ -1,9 +1,11 @@
-// Adds DOM matchers like toBeInTheDocument() and unmounts rendered components after each test.
+// Adds DOM matchers like toBeInTheDocument(), unmounts rendered components and restores mocks
+// (e.g. a stubbed fetch) after each test.
 import '@testing-library/jest-dom/vitest';
 
 import { cleanup } from '@testing-library/react';
-import { afterEach } from 'vitest';
+import { afterEach, vi } from 'vitest';
 
 afterEach(() => {
   cleanup();
+  vi.restoreAllMocks();
 });

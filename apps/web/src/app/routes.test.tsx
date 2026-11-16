@@ -1,10 +1,15 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 
+import { mockFetch } from '../test/mock-fetch';
 import { renderRoute } from '../test/render-route';
 
 describe('app routes', () => {
+  beforeEach(() => {
+    mockFetch({ body: { status: 'ok', version: '0.0.0', uptime: 1 } });
+  });
+
   it('renders the home page inside the app shell', () => {
     renderRoute('/');
 

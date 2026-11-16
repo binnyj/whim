@@ -1,3 +1,4 @@
+import { ApiStatus } from '../features/health/ApiStatus';
 import styles from './Page.module.css';
 
 /** Placeholder home page; the location → mood flow replaces it. */
@@ -8,6 +9,7 @@ export function HomePage() {
       <p className={styles.lead}>
         Whim finds something fun nearby that fits your mood and your time.
       </p>
+      <ApiStatus />
     </section>
   );
 }
