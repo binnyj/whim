@@ -1,0 +1,13 @@
+{
+  "name": "@whim/shared",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "echo '@whim/shared: dev not configured yet (P0-06)'",
+    "build": "echo '@whim/shared: build not configured yet (P0-06)'",
+    "lint": "echo '@whim/shared: lint not configured yet (P0-04)'",
+    "typecheck": "echo '@whim/shared: typecheck not configured yet (P0-03)'",
+    "test": "echo '@whim/shared: test not configured yet (P0-09)'"
+  }
+}
