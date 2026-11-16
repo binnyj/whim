@@ -22,3 +22,14 @@ export const errorResponseSchema = z.object({
 });
 
 export type ErrorResponse = z.infer<typeof errorResponseSchema>;
+
+/** One field-level problem in a `VALIDATION_ERROR`'s `details` array. */
+export const validationIssueSchema = z.object({
+  /** Which part of the request was invalid. */
+  location: z.enum(['body', 'query', 'params']),
+  /** Dot-separated path to the field, e.g. `location.lat`; empty when the whole part is invalid. */
+  path: z.string(),
+  message: z.string(),
+});
+
+export type ValidationIssue = z.infer<typeof validationIssueSchema>;

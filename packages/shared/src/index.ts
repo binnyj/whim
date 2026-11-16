@@ -4,5 +4,7 @@ export {
   errorCodeSchema,
   type ErrorResponse,
   errorResponseSchema,
+  type ValidationIssue,
+  validationIssueSchema,
 } from './errors.js';
 export { type HealthResponse, healthResponseSchema } from './health.js';

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { errorResponseSchema } from './errors.js';
+import { errorResponseSchema, validationIssueSchema } from './errors.js';
 
 describe('errorResponseSchema', () => {
   it('parses an error with details', () => {
@@ -23,5 +23,19 @@ describe('errorResponseSchema', () => {
     ['missing envelope', { code: 'NOT_FOUND', message: 'x' }],
   ])('rejects %s', (_label, body) => {
     expect(errorResponseSchema.safeParse(body).success).toBe(false);
+  });
+});
+
+describe('validationIssueSchema', () => {
+  it('parses an issue', () => {
+    const issue = { location: 'body', path: 'location.lat', message: 'Too big' };
+
+    expect(validationIssueSchema.parse(issue)).toEqual(issue);
+  });
+
+  it('rejects an unknown location', () => {
+    expect(
+      validationIssueSchema.safeParse({ location: 'headers', path: '', message: 'x' }).success,
+    ).toBe(false);
   });
 });
