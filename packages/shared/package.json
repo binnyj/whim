@@ -4,13 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "echo '@whim/shared: dev not configured yet (P0-06)'",
-    "build": "echo '@whim/shared: build not configured yet (P0-06)'",
     "lint": "eslint .",
     "typecheck": "tsc -p tsconfig.json",
-    "test": "echo '@whim/shared: test not configured yet (P0-09)'"
+    "test": "vitest run"
   },
   "exports": {
     ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "zod": "^4.6.7"
   }
 }
