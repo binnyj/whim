@@ -4,3 +4,8 @@ packages:
 
 # Refuse to install on a Node version outside "engines".
 engineStrict: true
+
+# Dependencies allowed to run install scripts (pnpm blocks them by default).
+allowBuilds:
+  # tsx/Vite bundler; its postinstall verifies the native binary for this platform.
+  esbuild: true
