@@ -4,16 +4,21 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "echo '@whim/api: dev not configured yet (P0-07)'",
-    "build": "echo '@whim/api: build not configured yet (P0-07)'",
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts",
     "lint": "eslint .",
     "typecheck": "tsc -p tsconfig.json",
-    "test": "echo '@whim/api: test not configured yet (P0-09)'"
+    "test": "vitest run"
   },
   "dependencies": {
-    "@whim/shared": "workspace:*"
+    "@whim/shared": "workspace:*",
+    "express": "^5.3.0"
   },
   "devDependencies": {
-    "@types/node": "^26.6.6"
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.6",
+    "@types/supertest": "^7.2.1",
+    "supertest": "^7.3.2",
+    "tsx": "^4.23.15"
   }
 }
