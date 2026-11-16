@@ -38,3 +38,16 @@ lands on these choices, so they are fixed up front.
 - **npm workspaces:** no extra install, but hoisting lets a workspace import a package it never declared.
 - **Fastify:** built-in `inject`, schemas and logging; not chosen in favor of Express familiarity.
 - **Jest:** needs an extra TS/ESM transform layer that Vitest doesn't.
+
+## Addendum · TypeScript configuration (P0-03, 2026-11-16)
+
+- **Compiler:** TypeScript 7 (native `tsc`), one root `devDependency`; every package runs `tsc -p tsconfig.json` (no emit).
+- **`tsconfig.base.json`:** `strict`, `noUncheckedIndexedAccess`, `noImplicitOverride`, `noImplicitReturns`,
+  `verbatimModuleSyntax`, target/lib ES2023. Each package's `tsconfig.json` extends it.
+- **Module resolution:** `NodeNext` for `packages/shared` and `apps/api`, so relative imports in them use
+  `.js` extensions (`import { x } from './x.js'`) and run unchanged on Node. `apps/web` overrides to
+  `Bundler` (Vite resolves imports itself).
+- **Cross-package imports:** `@whim/shared` is a `workspace:*` dependency whose `exports` point at its
+  TypeScript source (`./src/index.ts`). Vite, tsx and Vitest all consume it with no build step and no
+  `paths` aliases to keep in sync. If the API's production build (P0-07 / P5-02) needs compiled JS,
+  it bundles `@whim/shared` rather than us publishing a built copy.
