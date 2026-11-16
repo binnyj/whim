@@ -1,0 +1,13 @@
+{
+  "name": "@whim/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "echo '@whim/api: dev not configured yet (P0-07)'",
+    "build": "echo '@whim/api: build not configured yet (P0-07)'",
+    "lint": "echo '@whim/api: lint not configured yet (P0-04)'",
+    "typecheck": "echo '@whim/api: typecheck not configured yet (P0-03)'",
+    "test": "echo '@whim/api: test not configured yet (P0-09)'"
+  }
+}

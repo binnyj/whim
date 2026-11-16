@@ -1,0 +1,13 @@
+{
+  "name": "@whim/web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "echo '@whim/web: dev not configured yet (P0-14)'",
+    "build": "echo '@whim/web: build not configured yet (P0-14)'",
+    "lint": "echo '@whim/web: lint not configured yet (P0-04)'",
+    "typecheck": "echo '@whim/web: typecheck not configured yet (P0-03)'",
+    "test": "echo '@whim/web: test not configured yet (P0-09)'"
+  }
+}
