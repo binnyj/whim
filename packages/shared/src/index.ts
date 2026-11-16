@@ -1,2 +1,2 @@
-// Public entry point for @whim/shared. Domain types and schemas land here (P0-06).
-export const SHARED_PACKAGE = '@whim/shared';
+// Public entry point for @whim/shared: domain types and validation schemas used by web and api.
+export { type HealthResponse, healthResponseSchema } from './health.js';
