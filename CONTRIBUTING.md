@@ -4,14 +4,20 @@
 
 1. Get set up with the [README](README.md).
 2. Make the change with tests (see below).
-3. Commit. A pre-commit hook formats and lint-fixes staged files, and blocks the commit on errors it can't fix.
-4. Push. [CI](.github/workflows/ci.yml) runs format check, lint, typecheck, tests with coverage and the build on every push to `main` and every PR.
+3. Commit. A pre-commit hook scans staged files for secrets, formats and lint-fixes them, and blocks the commit on anything it can't fix.
+4. Push. [CI](.github/workflows/ci.yml) runs a secret scan, format check, lint, typecheck, tests with coverage and the build on every push to `main` and every PR.
 
 Before pushing, the same checks CI runs:
 
 ```bash
-pnpm format:check && pnpm lint && pnpm typecheck && pnpm test:coverage && pnpm build
+pnpm secrets:check && pnpm format:check && pnpm lint && pnpm typecheck && pnpm test:coverage && pnpm build
 ```
+
+## Secrets
+
+- Real keys go only in `apps/api/.env` (or your host's secret store), which Git ignores. `.env.example` files hold variable names and safe defaults, never real values.
+- [secretlint](https://github.com/secretlint/secretlint) blocks commits and fails CI if it finds something that looks like a credential (cloud, GitHub, Slack, OpenAI and Anthropic keys, private keys, passwords in URLs, and more).
+- If a real secret is ever pushed, **rotate it at the provider first**. Removing it from Git doesn't make it safe, because the old commit may already be copied or cached.
 
 ## Commits and pull requests
 

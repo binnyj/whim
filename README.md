@@ -51,6 +51,7 @@ Run from the repo root:
 | `pnpm lint`                         | ESLint (TypeScript, React, import order) and Stylelint (CSS)                     |
 | `pnpm typecheck`                    | TypeScript in every package                                                      |
 | `pnpm format` / `pnpm format:check` | Format with Prettier / check formatting                                          |
+| `pnpm secrets:check`                | Scan the repo for committed secrets (API keys, tokens, private keys)             |
 | `pnpm build`                        | Production build of the web app (`apps/web/dist`)                                |
 
 To run a script in one package: `pnpm --filter @whim/api test` (or `@whim/web`, `@whim/shared`).
