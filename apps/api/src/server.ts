@@ -1,13 +1,31 @@
 import pkg from '../package.json' with { type: 'json' };
 import { createApp } from './app.js';
+import { type Config, ConfigError, loadConfig } from './config.js';
 
-// Replaced by the typed config loader in the next step.
-const port = Number(process.env.PORT ?? 3000);
+// Load apps/api/.env if present; real environment variables still win.
+try {
+  process.loadEnvFile();
+} catch (error) {
+  if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
+}
+
+let config: Config;
+try {
+  config = loadConfig();
+} catch (error) {
+  if (error instanceof ConfigError) {
+    console.error(error.message);
+    process.exit(1);
+  }
+  throw error;
+}
 
 const app = createApp({ version: pkg.version });
 
-const server = app.listen(port, () => {
-  console.log(`@whim/api listening on http://localhost:${String(port)}`);
+const server = app.listen(config.PORT, () => {
+  console.log(
+    `@whim/api (${config.NODE_ENV}) listening on http://localhost:${String(config.PORT)}`,
+  );
 });
 
 function shutdown(signal: string): void {
