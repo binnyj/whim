@@ -8,9 +8,12 @@
     "build": "echo '@whim/web: build not configured yet (P0-14)'",
     "lint": "eslint .",
     "typecheck": "tsc -p tsconfig.json",
-    "test": "echo '@whim/web: test not configured yet (P0-09)'"
+    "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
     "@whim/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "jsdom": "^31.0.1"
   }
 }

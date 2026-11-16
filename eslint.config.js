@@ -18,7 +18,11 @@ export default defineConfig(
     files: ['**/*.{ts,tsx}'],
     extends: [tseslint.configs.strictTypeChecked, tseslint.configs.stylisticTypeChecked],
     languageOptions: {
-      parserOptions: { projectService: true, tsconfigRootDir: import.meta.dirname },
+      parserOptions: {
+        // Root-level TS files (e.g. vitest.config.ts) aren't in any package tsconfig.
+        projectService: { allowDefaultProject: ['*.ts'] },
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
     rules: {
       '@typescript-eslint/consistent-type-imports': 'error',
