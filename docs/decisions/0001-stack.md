@@ -64,3 +64,16 @@ lands on these choices, so they are fixed up front.
   `@eslint-react` replaces `eslint-plugin-react`, which doesn't support ESLint 10.
 - **Prettier 3** (`singleQuote`, `printWidth: 100`) owns formatting; `eslint-config-prettier` turns off
   conflicting lint rules. `.editorconfig` covers editors that don't run Prettier.
+
+## Addendum · Styling (P0-15, 2026-11-16)
+
+- **CSS Modules + CSS custom properties.** Each component has a `*.module.css` file with scoped,
+  camelCase class names (`styles.headerInner`); Vite supports this with no extra dependencies and no
+  runtime cost. Chosen over Tailwind to keep markup readable and avoid another build tool and DSL.
+- **Design tokens** live only in `apps/web/src/styles/tokens.css` as custom properties: semantic colors
+  (`--color-primary`, `--color-text-muted`…), a 4px spacing scale, type scale, radius, shadows and
+  motion. Light theme first; a dark theme later only redefines the color tokens.
+- **Mobile-first breakpoints:** `40rem` (md) and `64rem` (lg), written as `@media (width >= 40rem)`
+  since custom properties can't be used in media queries.
+- **Enforced by Stylelint** (`stylelint-config-standard`): hex colors, named colors and color functions
+  are errors everywhere except `tokens.css`. Runs in `pnpm lint` and the pre-commit hook.

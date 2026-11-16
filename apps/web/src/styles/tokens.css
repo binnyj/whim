@@ -1,0 +1,65 @@
+/*
+ * Whim design tokens. The ONLY place raw colors and sizes are defined; components use these
+ * custom properties (enforced by Stylelint). Light theme first; a dark theme can redefine the
+ * color tokens under a selector or media query later without touching components.
+ *
+ * Breakpoints (mobile-first; custom properties can't be used inside media queries, so use these
+ * literal values, e.g. `@media (width >= 40rem)`):
+ *   md: 40rem (640px)  — large phones landscape / small tablets
+ *   lg: 64rem (1024px) — laptops and up
+ */
+:root {
+  /* Color — semantic names describe the role, not the hue. */
+  --color-bg: #fffaf5;
+  --color-surface: #fff;
+  --color-surface-muted: #f6efe7;
+  --color-border: #e7ded3;
+  --color-text: #1f1b16;
+  --color-text-muted: #5c554d;
+  --color-primary: #c2410c;
+  --color-primary-hover: #9a3412;
+  --color-on-primary: #fff;
+  --color-focus: #1d4ed8;
+  --color-danger: #b91c1c;
+  --color-success: #15803d;
+  --color-warning: #a16207;
+
+  /* Spacing — a 4px-based scale. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* Typography */
+  --font-sans: system-ui, -apple-system, 'Segoe UI', roboto, 'Helvetica Neue', arial, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: clamp(1.75rem, 1.4rem + 1.5vw, 2.25rem);
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+
+  /* Shape */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgb(31 27 22 / 8%);
+  --shadow-md: 0 4px 12px rgb(31 27 22 / 10%);
+
+  /* Layout & motion */
+  --content-max-width: 40rem;
+  --focus-ring: 2px solid var(--color-focus);
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+}

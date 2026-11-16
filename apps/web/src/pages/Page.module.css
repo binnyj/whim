@@ -1,0 +1,17 @@
+/* Shared layout for simple content pages. */
+.page {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.02em;
+}
+
+.lead {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+}
