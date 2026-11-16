@@ -9,6 +9,7 @@ export default defineConfig({
       include: ['apps/*/src/**', 'packages/*/src/**'],
       exclude: [
         '**/*.test.{ts,tsx}',
+        '**/test-utils/**',
         // Process bootstrap (port binding, signals) is exercised by running the server, not unit tests.
         'apps/api/src/server.ts',
       ],

@@ -1,5 +1,5 @@
 import type { ErrorResponse } from '@whim/shared';
-import type { ErrorRequestHandler, RequestHandler } from 'express';
+import type { ErrorRequestHandler, Request, RequestHandler } from 'express';
 
 import { AppError, NotFoundError, RateLimitedError } from '../errors.js';
 
@@ -63,16 +63,16 @@ export const notFoundHandler: RequestHandler = (req, _res, next) => {
 export function errorHandler({
   logError,
 }: {
-  logError: (error: unknown) => void;
+  logError: (error: unknown, req: Request) => void;
 }): ErrorRequestHandler {
-  return (error: unknown, _req, res, next) => {
+  return (error: unknown, req, res, next) => {
     if (res.headersSent) {
       next(error);
       return;
     }
 
     const { status, body, headers } = toErrorReply(error);
-    if (status >= 500) logError(error);
+    if (status >= 500) logError(error, req);
 
     res.status(status).set(headers).json(body);
   };

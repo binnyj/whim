@@ -5,13 +5,14 @@ import { ConfigError, loadConfig, parseEnv } from './config.js';
 
 describe('loadConfig', () => {
   it('applies defaults when nothing is set', () => {
-    expect(loadConfig({})).toEqual({ NODE_ENV: 'development', PORT: 3000 });
+    expect(loadConfig({})).toEqual({ NODE_ENV: 'development', PORT: 3000, LOG_LEVEL: 'info' });
   });
 
   it('parses and coerces valid values', () => {
-    expect(loadConfig({ NODE_ENV: 'production', PORT: '8080' })).toEqual({
+    expect(loadConfig({ NODE_ENV: 'production', PORT: '8080', LOG_LEVEL: 'warn' })).toEqual({
       NODE_ENV: 'production',
       PORT: 8080,
+      LOG_LEVEL: 'warn',
     });
   });
 
@@ -27,6 +28,7 @@ describe('loadConfig', () => {
     ['PORT', { PORT: 'abc' }],
     ['PORT', { PORT: '70000' }],
     ['NODE_ENV', { NODE_ENV: 'staging' }],
+    ['LOG_LEVEL', { LOG_LEVEL: 'loud' }],
   ])('rejects an invalid %s and names it', (name, env) => {
     expect(() => loadConfig(env)).toThrow(ConfigError);
     expect(() => loadConfig(env)).toThrow(new RegExp(`- ${name}: `));
