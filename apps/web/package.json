@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "echo '@whim/web: dev not configured yet (P0-14)'",
     "build": "echo '@whim/web: build not configured yet (P0-14)'",
-    "lint": "echo '@whim/web: lint not configured yet (P0-04)'",
+    "lint": "eslint .",
     "typecheck": "tsc -p tsconfig.json",
     "test": "echo '@whim/web: test not configured yet (P0-09)'"
   },
